@@ -1,0 +1,92 @@
+.m-container {
+  color: black;
+  font-size: 25px;
+  display: inline-flex;
+  border-right: 1px solid rgba(0, 0, 0, 0.139);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.139);
+}
+.productCard {
+  width: 22rem;
+  height: 27rem;
+  margin: 0px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  justify-content: space-between;
+}
+.productCard img {
+  width: 70%;
+  height: 150px;
+  margin-top: 25px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
+.description {
+  font-size: 13px;
+}
+.m-footer {
+  font-size: 14.5px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+}
+.productName {
+  font-weight: 600;
+  font-size: 16px;
+}
+.m-buttons {
+  display: flex;
+  padding: 15px 0px 15px 0px;
+  gap: 20px;
+}
+.m-buttons button[type="button"] {
+  width: 40%;
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f0c14b;
+  color: black;
+  cursor: pointer;
+}
+
+.m-buttons button[type="button"]:hover {
+  background-color: #e2ab37;
+}
+
+.m-buttons button[type="button"]:active {
+  background-color: #d39e30;
+}
+.m-buttons select {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffffff;
+  border: 0.5px solid black;
+  color: black;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .productCard {
+    flex-direction: row;
+    gap: 15px;
+    height: 18rem;
+    font-size: 1px;
+  }
+  .productCard img {
+    width: 100px;
+    height: 100px;
+  }
+  .description {
+    font-size: 10px;
+  }
+  .m-buttons {
+    gap: 5px;
+  }
+  .m-buttons button[type="button"] {
+    font-size: 12px;
+    width: 100%;
+    padding: 5px 0px;
+  }
+}

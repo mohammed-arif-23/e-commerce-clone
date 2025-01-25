@@ -1,0 +1,152 @@
+.container {
+  margin: 0;
+  padding: 0;
+  background-color: #131a22;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  height: 60px;
+  display: flex;
+}
+
+.logo {
+  padding: 4px;
+  margin: 10px -10px 10px 10px;
+  width: 100px;
+  height: 35px;
+  overflow: hidden;
+  display: flex;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+.searchbar {
+  margin: auto;
+  width: 60%;
+  height: 40px;
+  overflow: hidden;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+}
+.searchbar input {
+  width: 100%;
+  height: 35px;
+  border-radius: 6px 0px 0px 6px;
+  border: none;
+  font-size: 17px;
+}
+.searchbar input::placeholder {
+  margin: 3px 0px 0px 10px;
+  font-size: 13.5px;
+  font-weight: 100;
+  position: absolute;
+}
+.searchbar input:focus {
+  outline: none;
+  border: none;
+}
+
+.searchbar button {
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  height: 37.5px;
+  background-color: #febd69;
+  border: none;
+  border-radius: 0px 6px 6px 0px;
+  cursor: pointer;
+}
+.searchbar button span {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 21px;
+}
+.searchbar button:hover {
+  background-color: #ecb061;
+}
+.returns {
+  margin: 4px;
+  width: 100px;
+  height: 50px;
+  color: white;
+  font-size: 12.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #131a22;
+}
+.returns span {
+  font-size: 16px;
+  font-weight: 700;
+}
+.returns:hover {
+  border: 1px solid white;
+}
+.cart {
+  margin: 4px;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  color: white;
+}
+
+.cart-icon {
+  margin: 0;
+  width: 50px;
+  height: 40px;
+}
+.cart p {
+  margin-top: 20px;
+  font-weight: 700;
+}
+.cart span {
+  position: absolute;
+  color: #ecb061;
+  margin-left: 22.5px;
+  font-weight: 700;
+  font-size: 13px;
+}
+@media (max-width: 768px) {
+  .container {
+    gap: 8px;
+    height: 50px;
+  }
+  .logo {
+    width: 80px;
+    height: 30px;
+  }
+  .logo img {
+    width: 80px;
+    height: 30px;
+  }
+  .searchbar {
+    width: 55%;
+  }
+  .searchbar input {
+    font-size: 13px;
+  }
+  .returns {
+    display: none;
+  }
+  .cart {
+    margin: 4px -19px 0px 0px;
+    width: 80px;
+    height: 40px;
+    display: flex;
+    color: white;
+  }
+  .cart span {
+    margin-left: 21px;
+  }
+  .cart p {
+    display: none;
+  }
+}
