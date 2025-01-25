@@ -68,6 +68,9 @@
   cursor: pointer;
 }
 @media (max-width: 768px) {
+  .m-container {
+    border-right: none;
+  }
   .productCard {
     flex-direction: row;
     gap: 15px;
