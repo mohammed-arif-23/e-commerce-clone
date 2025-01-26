@@ -4,14 +4,15 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Loader from "./Components/Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { MyContext } from "./MyContext";
+import { MyContext, orderContext } from "./MyContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CartHandle from "./Components/CartHandle";
+import Orders from "./Components/Orders";
 function App() {
   const [Condition, setCondition] = useState(false);
   const [Array, setArray] = useState([]);
   const [Cart, setCart] = useState([]);
-
+  const [Order, setOrder] = useState([]);
   let fetchData = async () => {
     let x = ["electronics", "jewelery", "men's clothing", "women's clothing"];
     setTimeout(() => {
@@ -42,45 +43,48 @@ function App() {
     <>
       <BrowserRouter>
         <MyContext.Provider value={{ Cart, setCart }}>
-          <Navbar />
-          <Routes>
-            <Route
-              path="/Cart"
-              element={<CartHandle key={Math.random(100000) * 999} />}
-            />
-            <Route
-              path="/"
-              element={
-                <>
-                  <div className="ContainerBox">
-                    <div className="main">
-                      <InfiniteScroll
-                        dataLength={Array.length}
-                        next={fetchData}
-                        hasMore={true}
-                        style={{
-                          overflow: "hidden",
-                          zIndex: "-1",
-                          width: "100%",
-                        }}
-                        loader={
-                          Condition ? (
-                            <div className="loader">
-                              <Loader />
-                            </div>
-                          ) : (
-                            <div></div>
-                          )
-                        }
-                      >
-                        <Handler data={Object.assign([], Array)} />
-                      </InfiniteScroll>
+          <orderContext.Provider value={{ Order, setOrder }}>
+            <Navbar />
+            <Routes>
+              <Route
+                path="/Cart"
+                element={<CartHandle key={Math.random(100000) * 999} />}
+              />
+              <Route path="/orders" element={<Orders />}></Route>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <div className="ContainerBox">
+                      <div className="main">
+                        <InfiniteScroll
+                          dataLength={Array.length}
+                          next={fetchData}
+                          hasMore={true}
+                          style={{
+                            overflow: "hidden",
+                            zIndex: "-1",
+                            width: "100%",
+                          }}
+                          loader={
+                            Condition ? (
+                              <div className="loader">
+                                <Loader />
+                              </div>
+                            ) : (
+                              <div></div>
+                            )
+                          }
+                        >
+                          <Handler data={Object.assign([], Array)} />
+                        </InfiniteScroll>
+                      </div>
                     </div>
-                  </div>
-                </>
-              }
-            />
-          </Routes>
+                  </>
+                }
+              />
+            </Routes>
+          </orderContext.Provider>
         </MyContext.Provider>
       </BrowserRouter>
     </>

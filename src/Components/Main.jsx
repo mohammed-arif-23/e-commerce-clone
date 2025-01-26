@@ -1,27 +1,51 @@
 import React, { useContext, useState } from "react";
 import "./Styles/Main.css";
-import { MyContext } from "../MyContext";
+import { MyContext, orderContext } from "../MyContext";
 import BuyNowAlert from "./Styles/Alerts/BuyNowAlert";
 function Main(props) {
   const [showpopup, setShowPopup] = useState(false);
   const { Cart, setCart } = useContext(MyContext);
-  const handleClick = (e) => {
-    setCart((prev) => [
-      ...prev,
-      {
-        ...props.data,
-        price: (props.data.price * 86.55).toFixed(2),
-        quantity: parseInt(e.target.parentNode.firstChild.value),
-        total:
-          parseInt(e.target.parentNode.firstChild.value) *
-          (props.data.price * 86.55).toFixed(2),
-      },
-    ]);
+  const { Order, setOrder } = useContext(orderContext);
+  const addToCart = document.getElementById("addToCart");
+
+  const handleOrder = () => {
+    setShowPopup(true);
   };
+
+  const handleClick = (e) => {
+    setCart((prev) => {
+      const itemIndex = prev.findIndex((item) => item.id === props.data.id);
+      if (itemIndex !== -1) {
+        const updatedCart = [...prev];
+        updatedCart[itemIndex].quantity += parseInt(
+          e.target.parentNode.firstChild.value
+        );
+        updatedCart[itemIndex].total =
+          updatedCart[itemIndex].quantity *
+          (props.data.price * 86.55).toFixed(2);
+        return updatedCart;
+      } else {
+        return [
+          ...prev,
+          {
+            ...props.data,
+            price: (props.data.price * 86.55).toFixed(2),
+            quantity: parseInt(e.target.parentNode.firstChild.value),
+            total:
+              parseInt(e.target.parentNode.firstChild.value) *
+              (props.data.price * 86.55).toFixed(2),
+          },
+        ];
+      }
+    });
+    window.alert("Added to cart Successfully");
+  };
+
   return (
     <>
       {showpopup && (
         <BuyNowAlert
+          Order={Order}
           setShowPopup={setShowPopup}
           showPopup={showpopup}
           message={props.data}
@@ -58,11 +82,11 @@ function Main(props) {
                 <option value="9">9</option>
                 <option value="10">10</option>
               </select>
-              <button type="button" onClick={handleClick}>
+              <button type="button" id="addToCart" onClick={handleClick}>
                 Add to Cart
               </button>
-              <button type="button" onClick={() => setShowPopup(true)}>
-                Buy Now
+              <button type="button" onClick={handleOrder}>
+                Overview
               </button>
             </div>
           </div>

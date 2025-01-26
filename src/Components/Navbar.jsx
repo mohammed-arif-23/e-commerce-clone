@@ -17,9 +17,11 @@ function Navbar() {
   return (
     <>
       <div className="container">
-        <div className="logo">
-          <img src="https://ijaihari.github.io/projects/Amazon%20Clone/images/amazon-logo-white.png" />
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <img src="https://ijaihari.github.io/projects/Amazon%20Clone/images/amazon-logo-white.png" />
+          </div>
+        </Link>
         <div className="searchbar">
           <input type="text" placeholder="Search Amazon.in" />
           <button>
@@ -28,12 +30,14 @@ function Navbar() {
             </span>
           </button>
         </div>
-        <div className="returns">
-          <p>
-            Returns <br />
-            <span> & Orders</span>
-          </p>
-        </div>
+        <Link to="/orders">
+          <div className="returns">
+            <p>
+              Returns <br />
+              <span> & Orders</span>
+            </p>
+          </div>
+        </Link>
         <Link to="/Cart">
           <div className="cart">
             <img

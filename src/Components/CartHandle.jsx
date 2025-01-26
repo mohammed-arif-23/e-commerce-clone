@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { MyContext } from "../MyContext";
+import { MyContext, orderContext } from "../MyContext";
 import "./Styles/Cart.css";
 import OrderAlert from "./Styles/Alerts/OrderAlert";
 import { NavLink } from "react-router-dom";
@@ -15,6 +15,7 @@ function CartHandle() {
     return [total.toFixed(2), value.toFixed(2), tax.toFixed(2)];
   };
   const [showpopup, setShowPopup] = useState(false);
+  const { Order, setOrder } = useContext(orderContext);
   return (
     <>
       {showpopup && (
@@ -48,6 +49,14 @@ function CartHandle() {
                               Quantity : {a.quantity}
                             </div>
                           </div>
+                          <button
+                            className="remove"
+                            onClick={() =>
+                              setCart(Cart.filter((item) => item.id !== a.id))
+                            }
+                          >
+                            Remove
+                          </button>
                         </div>
                       </div>
                     </>
@@ -94,13 +103,24 @@ function CartHandle() {
                 <div className="flex-row">
                   <button
                     className="place-order"
-                    onClick={() => setShowPopup(true)}
+                    onClick={() => {
+                      window.alert("Order Placed Successfully");
+                      setShowPopup(true);
+                      setOrder(Object.assign([], Cart));
+                    }}
                   >
                     Place Order
                   </button>
-                  <NavLink to="/" className="place-order  link">
-                    Shop More
-                  </NavLink>
+
+                  {window.innerWidth > 768 ? (
+                    <NavLink to="/" className="place-order  link">
+                      Shop More
+                    </NavLink>
+                  ) : (
+                    <NavLink to="/orders" className="place-order  link">
+                      View Orders
+                    </NavLink>
+                  )}
                 </div>
               </div>
             </div>

@@ -20,7 +20,6 @@
   flex-direction: column;
   align-items: center;
   transition: all 0.3s ease-in-out;
-  animation: pop 0.3s ease-in-out forwards;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -79,21 +78,82 @@
   font-weight: 600;
   text-decoration: underline;
 }
+.order-popup {
+  animation: fade-in 0.3s ease-in-out forwards;
+}
+.order-popup-content {
+  animation: slide-in 0.3s ease-in-out forwards;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+.light {
+  font-weight: 400;
+}
 @media (max-width: 768px) {
   .order-popup-content {
-    width: 280px;
+    width: 90%;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
   }
-  .order-popup-content p {
-    font-size: 18px;
-    font-weight: 500;
-  }
-  .o-card {
-    gap: 20px;
-  }
-  .o-info p:first-child {
+
+  .order-popup-content button {
+    width: 100%;
+    padding: 12px;
     font-size: 14px;
+    margin-top: 8px;
   }
+
+  .order-popup-content p {
+    font-size: 17px;
+    margin-bottom: 15px;
+  }
+
+  .o-card {
+    flex-direction: column;
+    gap: 20px;
+    padding: 8px;
+  }
+
+  .o-info {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .o-info p:first-child {
+    font-weight: 600;
+  }
+
+  .o-info p:last-child {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .o-card img {
+    width: 80px;
+    height: 80px;
+  }
+
   .order-popup-msg {
     font-size: 18px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    text-align: center;
+    font-weight: 500;
+    text-decoration: underline;
   }
 }

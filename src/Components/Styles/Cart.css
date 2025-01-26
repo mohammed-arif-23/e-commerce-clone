@@ -130,10 +130,28 @@
     margin-left: 30px;
     font-weight: 400;
   }
+  .remove {
+    margin-top: 25px;
+    margin-left: 2px;
+  }
 }
 .link {
   margin-left: 25px;
   width: 90px;
   font-weight: 500;
   text-decoration: none;
+  font-size: 14.5px;
+}
+.remove {
+  color: white;
+  background-color: #f0c14b;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  height: fit-content;
+  width: fit-content;
+  margin-left: 10px;
 }
